@@ -1,9 +1,16 @@
 import React from "react";
 import { AppBar, Toolbar, styled, InputBase, Box } from "@mui/material";
-import { Menu as MenuIcon, Search, Tune } from "@mui/icons-material";
+import {
+  Menu as MenuIcon,
+  Search,
+  Tune,
+  HelpOutlineOutlined,
+  SettingsOutlined,
+  AppsOutlined,
+  AccountCircleOutlined,
+} from "@mui/icons-material";
 import { gmailLogo } from "../contsants/constants";
 
-// eslint-disable-next-line
 const StyledAppBar = styled(AppBar)({
   background: "#f5f5f5 ",
   boxShadow: "none",
@@ -24,12 +31,21 @@ const SearchWrap = styled(Box)({
     padding: "0 10px",
   },
 });
-const Header = () => {
+
+const OptionsWrap = styled(Box)({
+  width: "100%",
+  display: "flex",
+  justifyContent: "end",
+  "& > svg ": {
+    marginLeft: "20px",
+  },
+});
+const Header = ({ toggleDrawer }) => {
   return (
     <div>
       <StyledAppBar position="static">
         <Toolbar>
-          <MenuIcon color="action" />
+          <MenuIcon color="action" onClick={toggleDrawer} />
           <img
             src={gmailLogo}
             alt="gmailLogo"
@@ -40,6 +56,12 @@ const Header = () => {
             <InputBase placeholder="Search Mail" />
             <Tune color="action" />
           </SearchWrap>
+          <OptionsWrap>
+            <HelpOutlineOutlined color="action" />
+            <SettingsOutlined color="action" />
+            <AppsOutlined color="action" />
+            <AccountCircleOutlined color="action" />
+          </OptionsWrap>
         </Toolbar>
       </StyledAppBar>
     </div>
